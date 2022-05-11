@@ -54,4 +54,23 @@ class GamePlay:
             print("\nYou must enter a number!")
             return -1
 
+    def inputRowCol(self):
+        row = col = -1
+
+        print(self.computer.getBoard())
+        print(self.player.getBoard())
+
+        while True:
+            row = self.inputNumber('row')
+            if row == -1:
+                continue
+
+            col = self.inputNumber('column')
+            if col != -1:
+                break
+            else:
+                continue
+
+        return [row, col]
+
     
