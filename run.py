@@ -99,4 +99,22 @@ class GamePlay:
             else:
                 print('Player missed this time.')
 
-            
+            coordinates = []
+            while True:
+                coordinates = list(np.random.randint(0, N, 2))
+                if coordinates in self.computer.moves:
+                    continue
+                else:
+                    break
+
+            if self.player.shipsDestroyed == numShips:
+                break
+
+            print(f'Computer Guessed: ({coordinates[0]},{coordinates[1]})')
+            self.computer.moves.append(coordinates)
+
+            if coordinates in self.player.getBoard():
+                self.computer.shipsDestroyed += 1
+                print('Computer destroyed your ship!')
+            else:
+                print('Computer missed this time.')
