@@ -34,3 +34,24 @@ def printBoard(name, coordinates):
         print()
 
 
+class GamePlay:
+    def __init__(self, name):
+        self.name = name
+        self.computer = Player()
+        self.player = Player(name)
+
+    def inputNumber(self, name):
+        number = -1
+
+        try:
+            number = int(input(f"Guess a {name}:\n"))
+            if number < 0 or number > numShips:
+                print(f"\nValues must be between 0 and {numShips}!")
+                return -1
+            else:
+                return number
+        except:
+            print("\nYou must enter a number!")
+            return -1
+
+    
