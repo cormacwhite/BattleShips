@@ -118,3 +118,36 @@ class GamePlay:
                 print('Computer destroyed your ship!')
             else:
                 print('Computer missed this time.')
+
+            # display results
+            divider()
+            print(
+                f"After this round, the scores are:\n{self.player.name}: {self.player.shipsDestroyed}  Computer: {self.computer.shipsDestroyed}")
+
+            if self.computer.shipsDestroyed == numShips:
+                break
+
+        self.showResults()
+
+    def showResults(self):
+        divider()
+        print('Results: ')
+        if self.player.shipsDestroyed == numShips:
+            print('Congratulations! You win.')
+        else:
+            print('You lose. Better luck next time!')
+
+        divider()
+        print('Thank You for playing the ULTIMATE BATTLESHIP!')
+        divider()
+        print()
+
+
+def main():
+    playerName = welcomeScreen()
+    G = GamePlay(playerName)
+    G.play()
+
+
+if __name__ == "__main__":
+    main()
