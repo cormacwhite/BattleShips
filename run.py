@@ -73,4 +73,30 @@ class GamePlay:
 
         return [row, col]
 
-    
+    def play(self):
+        printBoard(self.player.name, self.player.getBoard())
+        printBoard(self.computer.name, self.computer.getBoard())
+
+        while self.computer.shipsDestroyed != numShips or self.player.shipsDestroyed != numShips:
+            divider()
+
+            coordinates = []
+            while True:
+                coordinates = self.inputRowCol()
+                if coordinates in self.player.moves:
+                    print(
+                        '\nYou cannot guess the same coordinates more than once.')
+                    continue
+                else:
+                    break
+
+            print(f'Player Guessed: ({coordinates[0]},{coordinates[1]})')
+            self.player.moves.append(coordinates)
+
+            if coordinates in self.computer.getBoard():
+                self.player.shipsDestroyed += 1
+                print('Congrats! You destroyed the ship!')
+            else:
+                print('Player missed this time.')
+
+            
