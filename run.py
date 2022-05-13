@@ -57,9 +57,6 @@ class GamePlay:
     def inputRowCol(self):
         row = col = -1
 
-        print(self.computer.getBoard())
-        print(self.player.getBoard())
-
         while True:
             row = self.inputNumber('row')
             if row == -1:
